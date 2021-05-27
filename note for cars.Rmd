@@ -1,0 +1,28 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+1. Get the data!!!
+```{r}
+library(haven)
+cars <- read_sas("http://www.principlesofeconometrics.com/sas/cars.sas7bdat", 
+    NULL)
+```
+
+```{r}
+
+library(tidyverse)
+cars %>%
+ filter(CYL >= 4L & CYL <= 8L) %>%
+ filter(ENG >= 115L & ENG <= 455L) %>%
+ 
+    filter(WGT >= 2007L & WGT <= 5140L) %>%
+ ggplot() +
+ aes(x = MPG, y = CYL) +
+ geom_boxplot(fill = "#0c4c8a") +
+ theme_minimal()
+
+
+```
+
